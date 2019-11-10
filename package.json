@@ -1,0 +1,28 @@
+{
+  "name": "bolt-oauth",
+  "version": "1.0.0",
+  "description": "A library to assist you with OAuth when using Slack's Bolt framework.",
+  "main": "index.js",
+  "keywords": [
+    "slack",
+    "bolt",
+    "oauth",
+    "nodejs"
+  ],
+  "author": "Alex Sopinka <alex@sopinka.com> (https://sopinka.com)",
+  "license": "MIT",
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/asopinka/bolt-oauth.git"
+    }
+  ],
+  "homepage": "https://github.com/asopinka/bolt-oauth",
+  "bugs": {
+    "url": "https://github.com/asopinka/bolt-oauth/issues"
+  },
+  "dependencies": {
+    "@slack/bolt": "^1.4.1", 
+    "@slack/web-api": "^5.4.0"
+  }
+}
