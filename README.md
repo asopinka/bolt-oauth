@@ -52,7 +52,7 @@ const oauthError = (error) => {
 ```
 
 ##### State Check
-You'll want to implement this function if you're doing a state check on OAuth to prevent XRSF attacks. If you're not already, you'll want to do this as a best practice.
+You'll want to implement this function if you're doing a state check on OAuth to prevent XSRF attacks. If you're not already, you'll want to do this as a best practice.
 
 ```
 const oauthStateCheck = (oAuthState) => {
@@ -91,12 +91,12 @@ const app = new App({
     authorize: authorizeFn,
     receiver: Auth({
         clientId: process.env.SLACK_CLIENT_ID,
-    clientSecret: process.env.SLACK_CLIENT_SECRET,
-    signingSecret: process.env.SLACK_SIGNING_SECRET,
-    redirectUrl: process.env.SLACK_REDIRECT_URL,
-    stateCheck: oauthStateCheck,
-    onSuccess: oauthSuccess,
-    onError: oauthError
+        clientSecret: process.env.SLACK_CLIENT_SECRET,
+        signingSecret: process.env.SLACK_SIGNING_SECRET,
+        redirectUrl: process.env.SLACK_REDIRECT_URL,
+        stateCheck: oauthStateCheck,
+        onSuccess: oauthSuccess,
+        onError: oauthError
     })
 });
 ```
