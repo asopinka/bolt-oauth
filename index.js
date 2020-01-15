@@ -25,7 +25,7 @@ const Auth = ({ app, clientId, clientSecret, signingSecret, redirectUrl, stateCh
 	expressApp.get(callbackUrl.pathname, async(req, res) => {
 		// do a state check
 		let state = req.query.state;
-		let stateIsValid = stateCheck();
+		let stateIsValid = stateCheck(state);
 
 		// if not valid, throw error
 		if (!stateIsValid) {
