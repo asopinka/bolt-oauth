@@ -1,7 +1,7 @@
 const { ExpressReceiver } = require('@slack/bolt');
 const { WebClient } = require('@slack/web-api');
 
-const Auth = ({ app, clientId, clientSecret, signingSecret, redirectUrl, stateCheck, onSuccess, onError }) => {
+const Auth = ({ app, clientId, clientSecret, signingSecret, redirectUrl, stateCheck, onSuccess, onError, useSlackOauthV2 = false }) => {
 	// param checks
 	if (!clientId) { throw new Error('clientId is required.') };
 	if (!clientSecret) { throw new Error('clientSecret is required.') };
@@ -35,7 +35,10 @@ const Auth = ({ app, clientId, clientSecret, signingSecret, redirectUrl, stateCh
 
 		// get tokens
 		const webClient = new WebClient(null);
-		return webClient.oauth.access({
+		const method = useSlackOauthV2
+		 ? webClient.oauth.v2.access
+		 : webClient.oauth.access;
+		return method({
 		    client_id: clientId,
 		    client_secret: clientSecret,
 		    code: req.query.code,
@@ -50,6 +53,6 @@ const Auth = ({ app, clientId, clientSecret, signingSecret, redirectUrl, stateCh
 	return receiver;
 };
 
-module.exports = ({ app, clientId, clientSecret, signingSecret, redirectUrl, stateCheck, onSuccess, onError }) => {
-	return Auth({ app, clientId, clientSecret, signingSecret, redirectUrl, stateCheck, onSuccess, onError });
+module.exports = ({ app, clientId, clientSecret, signingSecret, redirectUrl, stateCheck, onSuccess, onError, useSlackOauthV2 }) => {
+	return Auth({ app, clientId, clientSecret, signingSecret, redirectUrl, stateCheck, onSuccess, onError, useSlackOauthV2 });
 };
