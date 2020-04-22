@@ -1,6 +1,6 @@
 {
   "name": "bolt-oauth",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A library to assist you with OAuth when using Slack's Bolt framework.",
   "main": "index.js",
   "keywords": [

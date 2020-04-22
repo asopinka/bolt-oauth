@@ -96,12 +96,14 @@ const app = new App({
         redirectUrl: process.env.SLACK_REDIRECT_URL,
         stateCheck: oauthStateCheck,
         onSuccess: oauthSuccess,
-        onError: oauthError
+        onError: oauthError,
+        useSlackOauthV2: <true or false>
     })
 });
 ```
 - The environment variables above should be self-explanatory.
-- All fields are **required**.
+- All fields are **required** except
+-- `useSlackOauthV2` which is true/false depending on whether you want to use the old Slack OAuth or the new V2 OAuth with granular scopes. Defaults to `false` if omitted.
 
 ### Step 3: Celebrate 🎉
 
